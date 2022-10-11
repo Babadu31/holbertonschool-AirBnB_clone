@@ -13,8 +13,9 @@ class TestBaseModel(unittest.TestCase):
         self.assertEqual(type(b0.updated_at), datetime)
 
 
-    def test_id(self):          # marches
-        self.assertEqual(str, type(BaseModel().id))
+    def test_id(self):
+        b1 = BaseModel()          # marches
+        self.assertEqual(str, type(b1.id))
 
     def test_str(self):             # marches 
         b1 = BaseModel()
@@ -22,7 +23,8 @@ class TestBaseModel(unittest.TestCase):
     
     def test_to_dict(self):     # marches
         b1 = BaseModel()
-        self.assertTrue(dict, b1.to_dict())
+        b2 = b1.to_dict()
+        self.assertTrue(dict, type(b2))
     
     def test_save(self):           # marches
         b1 = BaseModel()
