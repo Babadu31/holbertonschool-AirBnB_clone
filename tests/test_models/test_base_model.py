@@ -25,6 +25,11 @@ class TestBaseModel(unittest.TestCase):
         b1 = BaseModel()
         b2 = b1.to_dict()
         self.assertTrue(dict, type(b2))
+
+    def test_to_dict_arg(self):
+        b1 = BaseModel()
+        with self.assertRaises(NameError):
+            b1.to_dict(hello)
     
     def test_save(self):           # marches
         b1 = BaseModel()
@@ -32,3 +37,5 @@ class TestBaseModel(unittest.TestCase):
         b1.save()
         self.assertNotEqual(update,b1.updated_at)
     
+if __name__ == "__main__":
+    unittest.main()
