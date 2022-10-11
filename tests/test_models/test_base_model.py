@@ -26,11 +26,6 @@ class TestBaseModel(unittest.TestCase):
         b2 = b1.to_dict()
         self.assertTrue(dict, type(b2))
 
-    def test_to_dict_arg(self):
-        b1 = BaseModel()
-        with self.assertRaises(NameError):
-            b1.to_dict(hello)
-    
     def test_save(self):           # marches
         b1 = BaseModel()
         update = b1.updated_at
