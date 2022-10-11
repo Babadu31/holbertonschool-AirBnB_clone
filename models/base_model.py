@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-from uuid import uuid
+from uuid import uuid4
 from datetime import datetime
 import models
 
@@ -42,4 +42,10 @@ class BaseModel :
         """
         dict = {}
         dict["__class__"] = self.__class__.__name__
+        for k, v in self.__dict__.items():
+            if isinstance(v, datetime):
+                dic[k] = v.isoformat()
+            else:
+                dic[k] = v
+        return dic
      
