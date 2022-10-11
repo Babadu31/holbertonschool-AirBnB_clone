@@ -19,7 +19,7 @@ class TestBaseModel(unittest.TestCase):
 
     def test_str(self):             # marches 
         b1 = BaseModel()
-        self.assertEqual(type(str(b1)), str)
+        self.assertEqual(str(b1), b1.__str__())
     
     def test_to_dict(self):     # marches
         b1 = BaseModel()
