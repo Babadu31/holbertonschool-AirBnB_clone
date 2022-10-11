@@ -16,10 +16,12 @@ class TestBaseModel(unittest.TestCase):
         b1 = BaseModel()          # marches
         self.assertEqual(str, type(b1.id))
 
+
     def test_str(self):             # marches 
         b1 = BaseModel()
-        self.assertEqual(str(b1), print(b1))
-    
+        self.assertEqual(str(b1),  b1.__str__())
+
+    @unittest.skip("Waiting for taieb")
     def test_to_dict(self):     # marches
         b1 = BaseModel()
         b2 = b1.to_dict()
