@@ -8,7 +8,7 @@ class BaseModel:
     """
     Base class
     """
-    def __init__(self):
+    def __init__(self):                 # a remplacer
         self.id = str(uuid4())
         self.created_at = datetime.now()
         self.updated_at = datetime.now()
