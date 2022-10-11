@@ -21,12 +21,12 @@ class TestBaseModel(unittest.TestCase):
         self.assertEqual(type(str(b1)), str)
     
     def test_to_dict(self):     # marches
-        b2 = BaseModel()
-        self.assertTrue(dict, type(b2.to_dict))
+        b1 = BaseModel()
+        self.assertTrue(dict, b1.to_dict())
     
     def test_save(self):           # marches
-        b3 = BaseModel()
-        update = b3.updated_at
-        b3.save()
-        self.assertNotEqual(update,b3.updated_at)
+        b1 = BaseModel()
+        update = b1.updated_at
+        b1.save()
+        self.assertNotEqual(update,b1.updated_at)
     
