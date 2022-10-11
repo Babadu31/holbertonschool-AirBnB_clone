@@ -23,9 +23,9 @@ class BaseModel:
         self.updated_at = datetime.now()
 
     def to_dict(self):
-        dict_obj = self.__dict__
+        dict_obj = self.__dict__.copy()
         dict_obj["__class__"] = self.__class__.__name__
         self.created_at = self.created_at.strftime("%Y-%m-%dT%H:%M:%S.%f")
         self.updated_at = self.updated_at.strftime("%Y-%m-%dT%H:%M:%S.%f")
         return (dict_obj)
-        
+      
