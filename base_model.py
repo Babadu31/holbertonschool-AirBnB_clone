@@ -15,12 +15,11 @@ class BaseModel:
         
         if (kwargs):
             for key, value in kwargs.items():
-                if key != "__class__":
-                    
-
-                    datetime.strptime(value, format_date)
-
-                setattr(self, key,  kwargs[key])
+                if __class__ in kwargs:
+                    if key != "__class__":
+                        if key == "created_at" or key == "updated_at":
+                            value = datetime.strptime(value, format_date)
+                        setattr(self, key,  kwargs[key])
         else:
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
@@ -40,11 +39,12 @@ class BaseModel:
         self.updated_at = datetime.now()
 
     def to_dict(self):
-        """"
-        un second truc pertinent
-        """
-        dict_obj = self.__dict__.copy()
-        dict_obj["__class__"] = self.__class__.__name__
-        self.created_at = self.created_at.strftime("%Y-%m-%dT%H:%M:%S.%f")
-        self.updated_at = self.updated_at.strftime("%Y-%m-%dT%H:%M:%S.%f")
-        return (dict_obj)
+        dictionary = {"__class__": self.__class__.__name__}
+        for key, value in self.__dict__.items():
+            if key == "created_at" or key == "updated_at":
+                dictionary[key] = value.strftime("%Y-%m-%dT%H:%M:%S.%f")
+            else:
+                dictionary[key] = value
+        return dictionary
+       
+         
