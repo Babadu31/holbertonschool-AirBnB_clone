@@ -8,10 +8,10 @@ class BaseModel:
     """
     Base class
     """
-    def __init__(self):
+    def __init__(self):                 # a remplacer
         self.id = str(uuid4())
-        created_at = datetime.now()
-        updated_at = datetime.now()
+        self.created_at = datetime.now()
+        self.updated_at = datetime.now()
 
     def __str__(self):
         """
@@ -20,12 +20,13 @@ class BaseModel:
         return (f"[{self.__class__.__name__}] ({self.id}) {self.__dict__}")
 
     def save(self):
-        updated_at = datetime.now()
+        self.updated_at = datetime.now()
 
     def to_dict(self):
-        dict_obj = self.__dict__
-        dict_obj["__class__"] = self.__class__.__name__
-        self.created_at = created_at.strftime("%Y-%m-%dT%H:%M:%S.%f")
-        self.updated_at = updated_at.strftime("%Y-%m-%dT%H:%M:%S.%f")
-        return (dict_obj)
-        
+        dictionary = {"__class__": self.__class__.__name__}
+        for key, value in self.__dict__.items():
+            if key == "created_at" or key == "updated_at":
+                dictionary[key] = value.strftime("%Y-%m-%dT%H:%M:%S.%f")
+            else:
+                dictionary[key] = value
+        return dictionary
