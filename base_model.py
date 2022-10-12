@@ -8,10 +8,23 @@ class BaseModel:
     """
     Base class
     """
-    def __init__(self):
-        self.created_at = datetime.now()
-        self.updated_at = datetime.now()
-        self.id = str(uuid4())
+
+    format_date = "%Y-%m-%dT%H:%M:%S.%f"
+
+    def __init__(self, *args, **kwargs):
+        
+        if (kwargs):
+            for key, value in kwargs.items():
+                if key != "__class__":
+                    
+
+                    datetime.strptime(value, format_date)
+
+                setattr(self, key,  kwargs[key])
+        else:
+            self.created_at = datetime.now()
+            self.updated_at = datetime.now()
+            self.id = str(uuid4())
 
 
     def __str__(self):
