@@ -4,21 +4,25 @@ command interpreter
 """
 
 import cmd
-
+from models.base_model import BaseModel
+import json
 
 class HBNBCommand(cmd.Cmd):
     """
     console
     """
     prompt = "(hbnb)"
+    __classes = [
+        'BaseModel', 'User', 'State', 'City', 'Amenity', 'Place', 'Review'
+        ]
 
-    def emptyLine(self):            # à vérifier 
+    def emptyline(self):       
         pass
 
     def do_quit(self, arg):
         raise SystemExit
 
-    def EOF(self, arg):
+    def do_EOF(self, arg):
         raise SystemExit
 
     def help_quit(self):
@@ -28,6 +32,15 @@ class HBNBCommand(cmd.Cmd):
     def help_EOF(self):
         print("EOF command used to exit the program")
         print()
+
+    def do_create(self, arg):
+        if arg == "":
+            print("** class name missing **")
+        elif arg not in self.__classes:
+            print("** class doesn't exist **")
+        else:
+            new_create = eval(arg)()
+            print(new_create.id)
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
