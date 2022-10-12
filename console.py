@@ -18,7 +18,7 @@ class HBNBCommand(cmd.Cmd):
     def do_quit(self, arg):
         raise SystemExit
 
-    def EOF(self, arg):
+    def do_EOF(self, arg):
         return True
 
     def help_quit(self):
