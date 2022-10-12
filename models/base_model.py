@@ -1,28 +1,27 @@
 #!/usr/bin/python3
 
-from uuid import uuid
 from datetime import datetime
-import models
+from uuid import uuid4
 
 
-class BaseModel :
+class BaseModel:
     """
     Base class
     """
+
     def __init__(self, *args, **kwargs):
         if kwargs:
             for key, value in kwargs.items():
-                if key == "created_at" or key == "updated_at":
-                    dttime_ob = datetime.strptime(value, '%Y-%m-%dT%H:%M:%S.%f')
-                    setattr(self, key, dttime_ob)
-                elif key != "__class__":
+                if key != "__class__":
+                    if key == "created_at" or key == "updated_at":
+                        value = datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f")
                     setattr(self, key, value)
-                else:
-                    self.id = str(uuid())
-                    self.created_at = datetime.now()
-                    self.updated_at = datetime.now()
-                    models.storage.new(self)
-    
+        else:
+            self.created_at = datetime.now()
+            self.updated_at = datetime.now()
+            self.id = str(uuid4())
+
+
     def __str__(self):
         """
         string
@@ -31,16 +30,15 @@ class BaseModel :
 
     def save(self):
         """
-        save
+        un truc pértinent
         """
         self.updated_at = datetime.now()
-        models.storage.save()
 
     def to_dict(self):
-        """
-        dict
-        """
-        dict = {}
-        dict["__class__"] = self.__class__.__name__
-        
-
+        dictionary = {"__class__": self.__class__.__name__}
+        for key, value in self.__dict__.items():
+            if key == "created_at" or key == "updated_at":
+                dictionary[key] = value.strftime("%Y-%m-%dT%H:%M:%S.%f")
+            else:
+                dictionary[key] = value
+        return dictionary
