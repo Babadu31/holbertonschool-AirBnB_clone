@@ -1,25 +1,37 @@
 #!/usr/bin/python3
 
-from uuid import uuid4
 from datetime import datetime
+from uuid import uuid4
 
 
 class BaseModel:
     """
     Base class
     """
-    def __init__(self):                 # a remplacer
-        self.id = str(uuid4())
-        self.created_at = datetime.now()
-        self.updated_at = datetime.now()
+
+    def __init__(self, *args, **kwargs):
+        if kwargs:
+            for key, value in kwargs.items():
+                if key != "__class__":
+                    if key == "created_at" or key == "updated_at":
+                        value = datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f")
+                    setattr(self, key, value)
+        else:
+            self.created_at = datetime.now()
+            self.updated_at = datetime.now()
+            self.id = str(uuid4())
+
 
     def __str__(self):
         """
         string
         """
-        return (f"[{self.__class__.__name__}] ({self.id}) {self.__dict__}")
+        return f"[{self.__class__.__name__}] ({self.id}) {self.__dict__}"
 
     def save(self):
+        """
+        un truc pértinent
+        """
         self.updated_at = datetime.now()
 
     def to_dict(self):
