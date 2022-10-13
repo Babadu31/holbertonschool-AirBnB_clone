@@ -17,35 +17,35 @@ class FileStorage:
         return self.__objects
 
     def new(self, obj):
-        key = f"{obj.__class name>.id"
-
-    def save(self):
-        pass
-
-    def reload(self):
-
-    def all(self):
-        """return the dictionary __object"""
-
-        return FileStorage.__objects
-
-    def new(self, obj):
-        """sets in objects the obj with key <obj classname>.id"""
-        obj_class_name = obj.__class__.__name__
-        FileStorage.__objects["{}.{}".format(obj_class_name, obj.id)] = obj
+       if obj is not None:
+            self.__objects.update(
+                {str(type(obj).__name__ + "." + obj.id): obj})
 
     def save(self):
         """Serializes __objects to the JSON file path: __file_path"""
-        i_dict = FileStorage.__objects
-        with open(FileStorage.__file_path, "w") as f:
-            json.dump(i_dict, f)
+        dict_serialized = {}
+        if self.__objects is not None:
+            for key, value in self.__objects.items():
+                dict_serialized[key] = value.to_dict()
+        with open(self.__file_path, mode="w", encoding="utf-8") as my_file:
+            json.dump(dict_serialized, my_file)
 
     def reload(self):
+        from models.base_model import BaseModel
+        from models.user import User
         """Deserialize the Json file __file_path to __objects, if it exists"""
-        try:
-            with open(self.__file_path, 'r') as f :
-                obj_dict = json.load(f)
-            for k, v in obj_dict.items():
-                self.__objects[k] = classes[v["__class__"]](**v)
-        except FileNotFoundError:
+        dict_deserialized = {}
+        if os.path.exists(self.__file_path):
+            with open(self.__file_path, encoding="utf-8") as my_file:
+                content = my_file.read()
+        else:
+            return
+        if content is not None or bool(content) is True:
+            dict_deserialized = json.loads(content)
+        for key, value in dict_deserialized.items():
+            if key not in self.__objects.keys():
+                ClassName = value["__class__"]
+                new_instance = eval("{}(**value)".format(ClassName))
+                self.new(new_instance)
+        else:
             pass
