@@ -2,7 +2,7 @@
 
 from datetime import datetime
 from uuid import uuid4
-from __init__ import storage
+from models.engine import filestorage
 
 class BaseModel:
     """
@@ -10,7 +10,9 @@ class BaseModel:
     """
 
     def __init__(self, *args, **kwargs):
-        if kwargs:
+        if kwargs:                                               # ! trop de conditions                                                                 
+                                                                 # dans le init pas sencé avoir autant de conditions
+                                                                 # décomposer init en plusieurs fonctions
             for key, value in kwargs.items():
                 if key != "__class__":
                     if key == "created_at" or key == "updated_at":
@@ -34,7 +36,7 @@ class BaseModel:
         un truc pértinent
         """
         self.updated_at = datetime.now()
-        storage.save()
+        models.storage.save()
 
     def to_dict(self):
         dictionary = {"__class__": self.__class__.__name__}
