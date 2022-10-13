@@ -3,7 +3,7 @@
 
 import os
 import json
-from models.base_model import BaseModel
+
 
 class FileStorage:
     """Class to store data in json files"""

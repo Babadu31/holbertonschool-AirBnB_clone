@@ -2,7 +2,7 @@
 
 from datetime import datetime
 from uuid import uuid4
-from models.engine import filestorage
+from models import storage
 
 class BaseModel:
     """
@@ -36,7 +36,7 @@ class BaseModel:
         un truc pértinent
         """
         self.updated_at = datetime.now()
-        models.storage.save()
+        storage.save()
 
     def to_dict(self):
         dictionary = {"__class__": self.__class__.__name__}
