@@ -17,9 +17,19 @@ class TestBaseModel(unittest.TestCase):
         self.assertEqual(str, type(b1.id))
 
 
-    def test_str(self):             # marches 
+    def test_str(self):             # marches (changement venant de Chris)
         b1 = BaseModel()
-        self.assertEqual(str(b1),  b1.__str__())
+        date_init = datetime.now()
+        date_repr = repr(date_init)
+        b1.created_at = b1.updated_at = date_init
+        b1.id = "12102022"
+        b_str = b1.__str__()
+
+        self.assertIn("[BaseModel] (12102022)", b_str)
+        self.assertIn("'id': '12102022'", b_str)
+        self.assertIn("'created_at': "+ date_repr, b_str)
+        self.assertIn("'updated_at': " + date_repr, b_str)
+
 
     @unittest.skip("Waiting for taieb")
     def test_to_dict(self):     # marches
