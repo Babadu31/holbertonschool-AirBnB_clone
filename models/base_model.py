@@ -6,10 +6,13 @@ from models import storage
 
 class BaseModel:
     """
-    Base class
+    defines base model attributes and methods
     """
 
     def __init__(self, *args, **kwargs):
+        """
+        create à new instance and save the info
+        """
         if kwargs:                                                                                                   
             for key, value in kwargs.items():
                 if key == "created_at" or key == "updated_at":
@@ -25,7 +28,7 @@ class BaseModel:
 
     def __str__(self):
         """
-        string
+        Change output to a specific format
         """
         return f"[{self.__class__.__name__}] ({self.id}) {self.__dict__}"
 

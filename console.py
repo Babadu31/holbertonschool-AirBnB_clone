@@ -15,24 +15,42 @@ class HBNBCommand(cmd.Cmd):
     """
     prompt = "(hbnb)"
 
-    def emptyline(self):       
+    def emptyline(self):
+        """
+        do nothing and pass the line
+        """       
         pass
 
     def do_quit(self, arg):
+        """
+        exit the programm
+        """
         raise SystemExit
 
     def do_EOF(self, arg):
+        """
+        exit the programm
+        """
         raise SystemExit
 
     def help_quit(self):
+        """
+        show quit description
+        """
         print("Quit command used to exit the program")
         print()
 
     def help_EOF(self):
+        """
+        show EOF description
+        """
         print("EOF command used to exit the program")
         print()
 
     def do_create(self, args):
+        """
+        create a new instance
+        """
         className = args.split()
         if self.check_for_class(className):
             new_instance = eval("{}()".format(className[0]))
@@ -40,12 +58,18 @@ class HBNBCommand(cmd.Cmd):
             print(new_instance.id)
 
     def do_show(self, arg):
+        """
+        print an specific instance
+        """
         class_id = arg.split()
         if self.check_for_class(class_id) and self.check_for_id(class_id):
             dict = storage.all()
             print("{}".format(dict[class_id[0] + "." + class_id[1]]))
 
     def do_destroy(self, args):
+        """
+        delete an specific instance
+        """
         class_id = args.split()
         if self.check_for_class(class_id) and self.check_for_id(class_id):
             dict = storage.all()
@@ -53,6 +77,9 @@ class HBNBCommand(cmd.Cmd):
             storage.save()
 
     def do_all(self, args):
+        """
+        print an specific class or all classes
+        """
         newlist = []
         args_sp = args.split()
         for key, value in storage.all().items():
@@ -67,6 +94,10 @@ class HBNBCommand(cmd.Cmd):
             print(newlist)
 
     def do_update(self, args):
+        """
+        create or update an attribute value in
+        a specific instance
+        """
         args_sp = args.split()
         if (self.check_for_class(args_sp) and self.check_for_id(args_sp) and
                 self.check_for_attribute(args_sp)):
@@ -84,6 +115,9 @@ class HBNBCommand(cmd.Cmd):
             upd_instance.save()
 
     def check_for_class(self, args):
+        """
+        check if the input is good and if the class exists
+        """
         if len(args) == 0:
             print("** class name missing **")
             return False
@@ -98,6 +132,10 @@ class HBNBCommand(cmd.Cmd):
                 return False
 
     def check_for_id(self, args):
+        """
+        check if the input is good and if the instance id
+        is present
+        """
         if len(args) < 2:
             print("** instance id missing **")
             return False
@@ -110,6 +148,10 @@ class HBNBCommand(cmd.Cmd):
             return False
 
     def check_for_attribute(self, args):
+        """
+        check if the input is good and if attribute
+        name and value are present
+        """
         if len(args) < 3:
             print("** attribute name missing **")
             return False
