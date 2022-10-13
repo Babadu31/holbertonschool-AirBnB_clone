@@ -83,17 +83,21 @@ sets the value of the attribute of an object.
 
 returns the string representation of a given object.
 
-- .new()
+- f-Strings
 
-- f format
-
-- .save
+“formatted string literals,” f-strings are string literals that have an f at the beginning and curly braces containing expressions that will be replaced with their values.
 
 - self
 
+self represents the instance of the class. By using the “self”  we can access the attributes and methods of the class in python
+
 - .strftime()
 
-- super
+returns a string representing date and time using date, time or datetime object.
+
+- {} dictionary 
+- [] lists
+- () tuple
 
 - __x__
 
@@ -156,14 +160,27 @@ https://www.programiz.com/python-programming/methods/built-in/setattr
 
 https://www.programiz.com/python-programming/methods/built-in/str
 
-- .new()
+- f-Strings
 
-- f format 
+https://realpython.com/python-f-strings/
 
-- .save
+- manipuling Text, JSON
+
+https://www.geeksforgeeks.org/saving-text-json-and-csv-to-a-file-in-python/
 
 - self
 
+https://www.geeksforgeeks.org/self-in-python-class/#:~:text=self%20represents%20the%20instance%20of,to%20refer%20to%20instance%20attributes.
+
 - .strftime()
 
+https://www.programiz.com/python-programming/datetime/strftime
+
 - super
+
+https://www.stashofcode.fr/comment-marche-fonction-super-de-python/
+https://he-arc.github.io/livre-python/super/index.html
+
+- Types natifs
+
+https://docs.python.org/fr/3/library/stdtypes.html
