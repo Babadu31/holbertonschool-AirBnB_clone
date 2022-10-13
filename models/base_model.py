@@ -10,9 +10,7 @@ class BaseModel:
     """
 
     def __init__(self, *args, **kwargs):
-        if kwargs:                                               # ! trop de conditions                                                                 
-                                                                 # dans le init pas sencé avoir autant de conditions
-                                                                 # décomposer init en plusieurs fonctions
+        if kwargs:                                                                                                      
             for key, value in kwargs.items():
                 if key != "__class__":
                     if key == "created_at" or key == "updated_at":
@@ -46,3 +44,4 @@ class BaseModel:
             else:
                 dictionary[key] = value
         return dictionary
+        

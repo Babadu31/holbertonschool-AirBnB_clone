@@ -14,6 +14,17 @@ class FileStorage:
     """Public instance method"""
 
     def all(self):
+        return self.__objects
+
+    def new(self, obj):
+        key = f"{obj.__class name>.id"
+
+    def save(self):
+        pass
+
+    def reload(self):
+
+    def all(self):
         """return the dictionary __object"""
 
         return FileStorage.__objects
