@@ -39,6 +39,43 @@ clone the repository. run the file console.py and this will initiate the interac
 
 ## examples
 
+## Reminder
+
+- OS
+OS module provides easy functions that allow us to interact and get Operating System information and even control processes.
+
+- json
+allows to work with JSON data
+
+- .items()
+The items() method returns a view object. The view object contains the key-value pairs of the dictionary, as tuples in a list.
+
+- .strptime()
+creates a datetime object from the given string.
+
+- setattr()
+sets the value of the attribute of an object.
+
+- str()
+returns the string representation of a given object.
+
+- .new()
+
+- f format
+
+- .save
+
+- self
+
+- .strftime()
+
+- super
+
+- __x__
+
+- x__
+
+- __x
 
 ## learning bonus
 
@@ -62,9 +99,39 @@ https://www.programiz.com/python-programming/datetime
 
 ## sources
 
+- OS
+https://www.digitalocean.com/community/tutorials/python-os-module
+
+- json
+https://www.w3schools.com/python/python_json.asp
+
 - UUID
 https://www.geeksforgeeks.org/generating-random-ids-using-uuid-python/
 https://docs.python.org/3/library/uuid.html
 
 - *args and **kwargs
 https://www.freecodecamp.org/news/args-and-kwargs-in-python/
+
+- .items()
+https://www.w3schools.com/python/ref_dictionary_items.asp#:~:text=The%20items()%20method%20returns,the%20dictionary%2C%20see%20example%20below.
+
+- .strptime()
+https://www.programiz.com/python-programming/datetime/strptime
+
+- setattr()
+https://www.programiz.com/python-programming/methods/built-in/setattr
+
+- str()
+https://www.programiz.com/python-programming/methods/built-in/str
+
+- .new()
+
+- f format 
+
+- .save
+
+- self
+
+- .strftime()
+
+- super
