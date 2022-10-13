@@ -1,28 +1,39 @@
 #!/usr/bin/python3
-"""commentaire de module"""
+"""
+FileStorage class
+"""
 
 import os
 import json
 
 
 class FileStorage:
-    """Class to store data in json files"""
+    """
+    Class to store data in json files
+    """
 
     __file_path = "file.json"
     __objects = {}
-    
-    """Public instance method"""
 
     def all(self):
+        """
+        return the __objects dictionary
+        """
         return self.__objects
 
     def new(self, obj):
-       if obj is not None:
+        """
+        creates a new key(class.id) & value(instance attributes dictionary)
+        of an instance in __objects dictionary
+        """
+        if obj is not None:
             self.__objects.update(
                 {str(type(obj).__name__ + "." + obj.id): obj})
 
     def save(self):
-        """Serializes __objects to the JSON file path: __file_path"""
+        """
+        Serializes __objects to the JSON file path: __file_path
+        """
         dict_serialized = {}
         if self.__objects is not None:
             for key, value in self.__objects.items():
@@ -31,9 +42,12 @@ class FileStorage:
             json.dump(dict_serialized, my_file)
 
     def reload(self):
+        """
+        Deserialize the Json file __file_path to __objects, if it exists
+        """
         from models.base_model import BaseModel
         from models.user import User
-        """Deserialize the Json file __file_path to __objects, if it exists"""
+        
         dict_deserialized = {}
         if os.path.exists(self.__file_path):
             with open(self.__file_path, encoding="utf-8") as my_file:
