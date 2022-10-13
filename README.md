@@ -38,3 +38,33 @@ clone the repository. run the file console.py and this will initiate the interac
 - update : Updates an instance based on the class name and id by adding or updating attribute (save the change into the JSON file)
 
 ## examples
+
+
+## learning bonus
+
+### What is an UUID
+
+UUID, Universal Unique Identifier, is a python library which helps in generating random objects of 128 bits as ids. It provides the uniqueness as it generates ids on the basis of time, Computer hardware (MAC etc.).
+
+Advantages of UUID :
+- Can be used as general utility to generate unique random id.
+- Can be used in cryptography and hashing applications.
+- Useful in generating random documents, addresses etc.
+
+### How to manage datetime
+https://www.programiz.com/python-programming/datetime
+
+### What is *args and **kwargs and how to use it
+
+*args :
+
+**kwargs
+
+## sources
+
+- UUID
+https://www.geeksforgeeks.org/generating-random-ids-using-uuid-python/
+https://docs.python.org/3/library/uuid.html
+
+- *args and **kwargs
+https://www.freecodecamp.org/news/args-and-kwargs-in-python/
