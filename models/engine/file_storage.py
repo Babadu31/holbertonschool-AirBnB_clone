@@ -10,22 +10,6 @@ class FileStorage:
 
     __file_path = "file.json"
     __objects = {}
-
-    @property
-    def objects(self):
-        return self.__objects
-
-    @objects.setter
-    def objects(self, value):
-        self.__objects = value
-    
-    @property
-    def file_path(self):
-        return self.__file_path
-    
-    @file_path.setter
-    def file_path(self, value):
-        self.__file_path = value
     
     """Public instance method"""
 
@@ -50,5 +34,7 @@ class FileStorage:
             path = FileStorage.__file_path
             with open(path, "r") as f :
                 obj_dict = json.load(f)
-        else:
-            return
+                for k in obj_dict.values():
+                    cls_name = k[__class__]
+                    del k[__class__]
+                    self.new(eval(cls_name)(**k))
