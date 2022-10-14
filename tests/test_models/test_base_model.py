@@ -30,8 +30,7 @@ class TestBaseModel(unittest.TestCase):
         self.assertIn("'created_at': " + date_repr, b_str)
         self.assertIn("'updated_at': " + date_repr, b_str)
 
-    @unittest.skip("Waiting for taieb")
-    def test_to_dict(self):     # marches
+    def test_to_dict(self):     # marches mais beugé selon Taieb
         b1 = BaseModel()
         b2 = b1.to_dict()
         self.assertTrue("{}", str(b2))
