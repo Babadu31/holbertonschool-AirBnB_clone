@@ -30,10 +30,15 @@ class TestBaseModel(unittest.TestCase):
         self.assertIn("'created_at': " + date_repr, b_str)
         self.assertIn("'updated_at': " + date_repr, b_str)
 
-    def test_to_dict(self):     # marches mais beugé selon Taieb
+#    def test_to_dict(self):     # marches mais beugé selon Taieb
+#        b1 = BaseModel()
+#        b2 = b1.to_dict()
+#        self.assertTrue("{}", str(b2))
+
+    def test_to_dict(self):     # marches
         b1 = BaseModel()
         b2 = b1.to_dict()
-        self.assertTrue("{}", str(b2))
+        self.assertEqual(dict, type(b2))
 
     def test_save(self):           # marches
         b1 = BaseModel()
