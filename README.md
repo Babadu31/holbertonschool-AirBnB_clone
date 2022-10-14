@@ -3,6 +3,7 @@
 ## description of the project
 
 create a console program to emulate a native console that will interpret commands and interact with AirBnB site clone classes and methods
+![Alt Text](https://camo.githubusercontent.com/75e4f7d5fb942b29453e3bdbc7b3753aeaae2ed6eae175cb3c97009f19b373df/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f696e7472616e65742d70726f6a656374732d66696c65732f636f6e63657074732f37342f68626e625f73746570322e706e67)
 
 ## Learning Objectives
 
@@ -21,9 +22,31 @@ create a console program to emulate a native console that will interpret command
 
 allows the user to interact with the classes and methods of the AirBnB cloned site using commands in the form of lines of text.
 
+## project architecture 
+
+- console.py - command interpreter
+- __init__.py - switch to file storage or database storage modes
+- __init__ - initialize instance attributes
+- __str__ - returns formatted string representation of instance
+- user.py - class User
+- tests - unit test files
+
+file_storage.py - class FileStorage; serializes instances to JSON file and deserializes from a JSON file
+- all : returns the dictionary __objects
+- new : sets in __objects the obj with key <obj class name>.id
+- save : serializes __objects to the JSON file (path: __file_path)
+- reload : deserializes the JSON file to __objects
+
 ## how to start it
 
 clone the repository. run the file console.py and this will initiate the interactive mode.
+```
+/AirBnB_clone$./console.py
+```
+output
+```
+(hbnb)
+```
 
 ## how to use it
 
@@ -105,8 +128,6 @@ returns a string representing date and time using date, time or datetime object.
 
 - __x
 
-## learning bonus
-
 ### What is an UUID
 
 UUID, Universal Unique Identifier, is a python library which helps in generating random objects of 128 bits as ids. It provides the uniqueness as it generates ids on the basis of time, Computer hardware (MAC etc.).
@@ -184,3 +205,7 @@ https://he-arc.github.io/livre-python/super/index.html
 - Types natifs
 
 https://docs.python.org/fr/3/library/stdtypes.html
+
+- unittest
+
+https://gayerie.dev/docs/python/python3/unittest.html
