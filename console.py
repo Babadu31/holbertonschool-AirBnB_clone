@@ -9,6 +9,7 @@ from models import storage
 import json
 from models.user import User
 
+
 class HBNBCommand(cmd.Cmd):
     """
     console
@@ -18,7 +19,7 @@ class HBNBCommand(cmd.Cmd):
     def emptyline(self):
         """
         do nothing and pass the line
-        """       
+        """
         pass
 
     def do_quit(self, arg):
@@ -108,7 +109,7 @@ class HBNBCommand(cmd.Cmd):
             upd_instance = storage.all().get(class_id)
             try:
                 upd_attr = getattr(upd_instance, attribute)
-            except:
+            finally:        # change exept
                 upd_attr = ""
             type_attr = type(upd_attr)
             setattr(upd_instance, attribute, type_attr(args_sp[3]))
@@ -127,7 +128,7 @@ class HBNBCommand(cmd.Cmd):
                 dict = storage.all()
                 del dict[args[0] + "." + check.id]
                 return True
-            except:
+            finally:        # change exept
                 print("** class doesn't exist **")
                 return False
 
@@ -162,6 +163,7 @@ class HBNBCommand(cmd.Cmd):
             return False
         else:
             return True
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()

@@ -4,6 +4,7 @@ from datetime import datetime
 from uuid import uuid4
 from models import storage
 
+
 class BaseModel:
     """
     defines base model attributes and methods
@@ -13,7 +14,7 @@ class BaseModel:
         """
         create à new instance and save the info
         """
-        if kwargs:                                                                                                   
+        if kwargs:
             for key, value in kwargs.items():
                 if key == "created_at" or key == "updated_at":
                     value = datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f")
@@ -24,7 +25,6 @@ class BaseModel:
             self.updated_at = datetime.now()
             self.id = str(uuid4())
             storage.new(self)
-
 
     def __str__(self):
         """
@@ -47,4 +47,3 @@ class BaseModel:
             else:
                 dictionary[key] = value
         return dictionary
-        
