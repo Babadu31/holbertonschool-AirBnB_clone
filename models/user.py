@@ -1,20 +1,21 @@
 #!/usr/bin/python3
 """
-Module for class User
+User class
 """
 from models.base_model import BaseModel
 
 
 class User(BaseModel):
     """
-    Class User that imports from BaseModel
-    Attributes:
-    email: email of User
-    password: password of User
-    first_name: first name of User
-    last_name: last name of User
+    public User class attributes
     """
     email = ""
     password = ""
     first_name = ""
     last_name = ""
+
+    def __init__(self, *args, **kwargs):
+        """
+        send to the parent class
+        """
+        super().__init__(*args, **kwargs)
