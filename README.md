@@ -209,3 +209,9 @@ https://docs.python.org/fr/3/library/stdtypes.html
 - unittest
 
 https://gayerie.dev/docs/python/python3/unittest.html
+
+
+
+ANDRIEUX Guenoel
+MURYANGO Chris Monfort 
+MISSUD Bastien
