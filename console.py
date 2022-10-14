@@ -1,22 +1,33 @@
 #!/usr/bin/python3
 """
-command intepreter
+command interpreter
 """
 
 import cmd
-from models.base_model import BaseModel
-from models.user import User
-from models.state import State
-from models.city import City
-from models.place import Place
 
 
-class AirBnBCommand(cmd.Cmd):
+class HBNBCommand(cmd.Cmd):
     """
-    interpreter class from cmd
+    console
     """
-    prompt = '(AirBnB)'
-    classes_list = ["BaseModel", "User", "State", "City", "Place"]
+    prompt = "(hbnb)"
 
-    def EOF(self, line):
-        
+    def emptyline(self):            # à vérifier 
+        pass
+
+    def do_quit(self, arg):
+        raise SystemExit
+
+    def do_EOF(self, arg):
+        return True
+
+    def help_quit(self):
+        print("Quit command used to exit the program")
+        print()
+
+    def help_EOF(self):
+        print("EOF command used to exit the program")
+        print()
+
+if __name__ == '__main__':
+    HBNBCommand().cmdloop()
