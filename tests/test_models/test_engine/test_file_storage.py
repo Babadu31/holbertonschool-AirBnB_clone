@@ -5,6 +5,7 @@ import json
 from models.base_model import BaseModel
 from models.user import User
 from models import storage
+from os import path
 
 
 class TestBase(unittest.TestCase):
@@ -29,6 +30,8 @@ class TestBase(unittest.TestCase):
         with open(self.__file_path, "r") as f:
             dict_of_dict = json.load(f) 
         self.assertIsNotNone(dict_of_dict)
+        self.assertEqual(dict, type(dict_of_dict))
+        self.assertTrue(os.path.exists(self.__file_path))
 
 if __name__ == '__main__':
     unittest.main()
