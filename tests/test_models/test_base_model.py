@@ -38,6 +38,7 @@ class TestBaseModel(unittest.TestCase):
     def test_to_dict(self):     # marches
         b1 = BaseModel()
         b2 = b1.to_dict()
+        self.assertIsNotNone(b2)
         self.assertEqual(dict, type(b2))
 
     def test_save(self):           # marches
