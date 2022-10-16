@@ -23,6 +23,12 @@ class TestBase(unittest.TestCase):
         storage.new(User_)
         self.assertIsNotNone(all_storage[User_.__class__.__name__ + "." + User_.id])
 
+    def test_save(self):
+        base = BaseModel()
+        base.save
+        with open(self.__file_path, "r") as f:
+            dict_of_dict = json.load(f) 
+        self.assertIsNotNone(dict_of_dict)
 
 if __name__ == '__main__':
     unittest.main()
