@@ -21,17 +21,19 @@ class TestBaseModel(unittest.TestCase):
         b1 = BaseModel()
         self.assertEqual(str(b1),  b1.__str__())
 
-    @unittest.skip("Waiting for taieb")
     def test_to_dict(self):     # marches
         b1 = BaseModel()
         b2 = b1.to_dict()
-        self.assertTrue("{}", str(b2))
+        self.assertIsNotNone(b2["__class__"])
+        self.assertEqual(str, type(b2["updated_at"]))
+        self.assertEqual(str, type(b2["created_at"]))
 
     def test_save(self):           # marches
         b1 = BaseModel()
-        update = b1.updated_at
+        update1 = b1.updated_at
         b1.save()
-        self.assertNotEqual(update,b1.updated_at)
+        update2 = b1.updated_at
+        self.assertNotEqual(update1,update2)
     
 if __name__ == "__main__":
     unittest.main()
