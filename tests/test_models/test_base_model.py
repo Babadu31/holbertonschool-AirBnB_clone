@@ -7,17 +7,11 @@ from datetime import datetime
 
 class TestBaseModel(unittest.TestCase):
 
-    def TestSave(self):
-        b0 = BaseModel()
-        self.assertEqual(type(b0. id), str)
-        self.assertEqual(type(b0.created_at), datetime)
-        self.assertEqual(type(b0.updated_at), datetime)
-
     def test_id(self):
         b1 = BaseModel()
         self.assertEqual(str, type(b1.id))
 
-    def test_str(self):             # marches (changement venant de Chris)
+    def test_str(self):
         b1 = BaseModel()
         date_init = datetime.now()
         date_repr = repr(date_init)
@@ -30,18 +24,16 @@ class TestBaseModel(unittest.TestCase):
         self.assertIn("'created_at': " + date_repr, b_str)
         self.assertIn("'updated_at': " + date_repr, b_str)
 
-#    def test_to_dict(self):     # marches mais beugé selon Taieb
-#        b1 = BaseModel()
-#        b2 = b1.to_dict()
-#        self.assertTrue("{}", str(b2))
-
-    def test_to_dict(self):     # marches
+    def test_to_dict(self):
         b1 = BaseModel()
         b2 = b1.to_dict()
         self.assertIsNotNone(b2)
+        self.assertIsNotNone(b2["__class__"])
+        self.assertEqual(str, type(b2["updated_at"]))
+        self.assertEqual(str, type(b2["created_at"]))
         self.assertEqual(dict, type(b2))
 
-    def test_save(self):           # marches
+    def test_save(self):
         b1 = BaseModel()
         update1 = b1.updated_at
         b1.save()
