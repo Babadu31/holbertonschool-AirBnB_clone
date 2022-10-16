@@ -42,9 +42,10 @@ class TestBaseModel(unittest.TestCase):
 
     def test_save(self):           # marches
         b1 = BaseModel()
-        update = b1.updated_at
+        update1 = b1.updated_at
         b1.save()
-        self.assertNotEqual(update, b1.updated_at)
+        update2 = b1.updated_at
+        self.assertNotEqual(update1,update2)
 
         if __name__ == "__main__":
             unittest.main()
