@@ -1,0 +1,61 @@
+.filters
+{
+    background-color: #FFFFFF;
+    height: 70px;
+    width: 100%;
+    border: 1px solid #DDDDDD;
+    border-radius: 4px;
+    display: flex;
+}
+
+button
+{
+    font-size: 18px;
+    background-color: #ff5a5f;
+    color: #FFFFFF;
+    height: 48px;
+    width: 20%;
+    border: none;
+    border-radius: 4px;
+    opacity: 90%;
+    margin-left: auto;
+    margin-right: 30px;
+    margin-top: 11px;
+}
+
+div.locations {
+    height: 100%;
+    width: 25%;
+    border-right: 1px solid #DDDDDD;
+    text-align: left;
+    line-height: 0;
+    padding-left: 44px;
+}
+
+div.locations h3 {
+    font-weight: 600;
+    margin-top: 30px;
+}
+
+div.locations h4 {
+    font-weight: 400;
+    font-size: 14px;
+}
+
+div.amenities {
+    height: 100%;
+    width: 25%;
+    text-align: left;
+    line-height: 0;
+    padding-left: 44px;
+}
+
+div.amenities h3 {
+    margin-top: 30px;
+    font-weight: 600;
+}
+
+div.amenities h4 {
+    font-weight: 400;
+    font-size: 14px;
+}
